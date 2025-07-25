@@ -3,7 +3,7 @@ const IORedis = require('ioredis')
 
 // creating connection for redis
 const connection = new IORedis({
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 6379,
     maxRetriesPerRequest: null,
 })
@@ -24,6 +24,11 @@ const worker = new Worker('image-processing-q', async(job) => {
         originalFile: job.data.fileName,
     }
 }, { connection })
+
+// handling if success
+worker.on('completed', (job) => {
+    console.log(`job completed of ID: ${job.id}`)
+})
 
 // handling error
 worker.on('failed', (job,err) => {

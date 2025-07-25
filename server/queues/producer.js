@@ -3,7 +3,7 @@ const IORedis = require('ioredis')
 
 // creating connection with redis
 const connection = new IORedis({
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 6379,
     maxRetriesPerRequest: null,
 })
@@ -19,6 +19,4 @@ async function init(){
     console.log('Job Added', response.data)
 }
 
-init()
-
-module.exports = processing_queue
+module.exports = processing_queue;
