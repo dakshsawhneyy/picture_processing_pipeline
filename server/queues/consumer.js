@@ -13,5 +13,19 @@ const worker = new Worker('image-processing-q', async(job) => {
     console.log(`Job Data: `, job.data)
 
     await new Promise(res => setTimeout(res, 2000))
+
+    // Actual Logic
+
     console.log('Finished Processing for ID: ', job.id)
+
+    return {
+        message: `Image Processed Successfully for ID: ${job.id}`,
+        imageID: job.data.imageID,
+        originalFile: job.data.fileName,
+    }
 }, { connection })
+
+// handling error
+worker.on('failed', (job,err) => {
+    console.log(`Job Failed: ${job.id}, Error: ${err}`)
+})
