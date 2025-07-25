@@ -20,3 +20,5 @@ async function init(){
 }
 
 init()
+
+module.exports = processing_queue
