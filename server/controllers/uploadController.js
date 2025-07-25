@@ -1,4 +1,4 @@
-const processing_queue = require('')
+const processing_queue = require('../queues/producer')
 
 const uploadController = async(req,res) => {
     try {
@@ -14,11 +14,11 @@ const uploadController = async(req,res) => {
             path: file.path
         })
 
-        res.status(200).json({success: true, message: 'Image is ready for processing', JobID: job.id})
+        res.status(200).json({success: true, message: 'Image is ready for processing'})
     } catch (error) {
         console.log(error);
         res.json({success:false,message:error.message})
     }
 }
 
-module.exports =  {uploadController, getJobStatus}
+module.exports = {uploadController}
