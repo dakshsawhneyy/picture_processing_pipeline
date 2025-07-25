@@ -14,9 +14,9 @@ const processing_queue = new Queue('image-processing-q', {connection})
 async function init(){
     const response = await processing_queue.add('Image Processsing', {
         imageID: Math.floor(Math.random() * 1000000), // random image ID of 1-6 digits
-        path: `s3://picture-processing-pipeline/${image_id}.jpg`,
+        path: `s3://picture-processing-pipeline/image.jpg`,
     })
-    console.log('Job Added', imageID)
+    console.log('Job Added', response.data)
 }
 
 init()
