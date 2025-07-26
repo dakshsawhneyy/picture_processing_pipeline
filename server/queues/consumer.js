@@ -22,7 +22,8 @@ const worker = new Worker('image-processing-q', async(job) => {
             fs.mkdirSync(outputDir);    // if output dir is not present, then make it
         }
 
-        const outputPath = path.join(outputDir, `resized-${filename}`);
+        const outputFileName = `resized-${filename}`
+        const outputPath = path.join(outputDir, outputFileName);
 
         // Resize image using sharp
         await sharp(filepath).resize(300,300).toFile(outputPath);    // resize to 300*300
@@ -31,7 +32,7 @@ const worker = new Worker('image-processing-q', async(job) => {
             message: `Image Processed Successfully for ID: ${job.id}`,
             imageID: job.data.imageID,
             originalFile: filepath,
-            resized: outputPath
+            resized: outputFileName
         }
 
     } catch (error) {

@@ -40,7 +40,7 @@ const getJobStatus = async(req,res) => {
         const result = await jobInfo.returnvalue; // processed data
 
         // Return Image URL too     // converting image to url so we can access this from frontend      // basename extracts only name from whole url
-        const imageURL = result && result.resized ? `${req.protocol}://${req.get('host')}/processed/${path.basename(result.resized)}` : null   //* http://localhost:3000/processed/predator.jpeg
+        const imageURL = result && result.resized ? `${req.protocol}://${req.get('host')}/processed/${result.resized}` : null   //* http://localhost:3000/processed/predator.jpeg
 
         return res.status(200).json({
             success: true, 
