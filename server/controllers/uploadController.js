@@ -3,7 +3,7 @@ const processing_queue = require('../queues/producer')
 // Api for uploading picture and adding it to message-queue
 const uploadController = async(req,res) => {
     try {
-        const file = req.file;  // get file as response in form-data
+        const file = req.file;  // get image as file as response in form-data
         
         if (!file){
             return res.status(400).json({error: 'No File Found'});
@@ -37,7 +37,7 @@ const getJobStatus = async(req,res) => {
 
         // fetch state from jobInfo and fetch processed data
         const state = await jobInfo.getState();
-        const result = await jobInfo.returnvalue(); // processed data
+        const result = await jobInfo.returnvalue; // processed data
 
         return res.status(200).json({
             success: true, 
@@ -53,4 +53,4 @@ const getJobStatus = async(req,res) => {
     }
 }
 
-module.exports = {uploadController}
+module.exports = {uploadController, getJobStatus}
