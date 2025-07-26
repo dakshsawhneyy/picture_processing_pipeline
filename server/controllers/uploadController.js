@@ -23,4 +23,34 @@ const uploadController = async(req,res) => {
     }
 }
 
+// Creating API for fetching Job Status so user can see
+const getJobStatus = async(req,res) => {
+    try {
+        const JobID = req.params.id;   // fetch id from url [url:id]
+
+        const jobInfo = await processing_queue.getJob(JobID);
+
+        // Base Case - If no jobInfo found, return error
+        if(!jobInfo){
+            return res.status(404).json({success: false, message: 'Job not found'});
+        }
+
+        // fetch state from jobInfo and fetch processed data
+        const state = await jobInfo.getState();
+        const result = await jobInfo.returnvalue(); // processed data
+
+        return res.status(200).json({
+            success: true, 
+            message: 'Job Status Fetched Successfully', 
+            jobID: JobID, 
+            state: state, 
+            data: result || 'No Result Yet'
+        });
+
+    } catch (error) {
+        console.log(error);
+        res.json({success: false, message: error.message})
+    }
+}
+
 module.exports = {uploadController}
