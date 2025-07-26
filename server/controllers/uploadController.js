@@ -11,6 +11,7 @@ const uploadController = async(req,res) => {
 
         // push image to queue
         const job = await processing_queue.add('Image Processsing', {
+            imageID: Math.floor(Math.random() * 100000),
             filename: file.filename,
             path: file.path
         })
@@ -21,6 +22,5 @@ const uploadController = async(req,res) => {
         res.json({success:false,message:error.message})
     }
 }
-
 
 module.exports = {uploadController}
