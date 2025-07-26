@@ -1,5 +1,6 @@
 const processing_queue = require('../queues/producer')
 
+// Api for uploading picture and adding it to message-queue
 const uploadController = async(req,res) => {
     try {
         const file = req.file;  // get file as response in form-data
@@ -9,16 +10,17 @@ const uploadController = async(req,res) => {
         }
 
         // push image to queue
-        await processing_queue.add('Image Processsing', {
+        const job = await processing_queue.add('Image Processsing', {
             filename: file.filename,
             path: file.path
         })
 
-        res.status(200).json({success: true, message: 'Image is ready for processing'})
+        res.status(200).json({success: true, message: 'Image is ready for processing', jobID: job.id})
     } catch (error) {
         console.log(error);
         res.json({success:false,message:error.message})
     }
 }
+
 
 module.exports = {uploadController}
