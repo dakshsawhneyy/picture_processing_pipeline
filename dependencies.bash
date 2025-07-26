@@ -1,0 +1,1 @@
+npm install sharp   # used to resize images

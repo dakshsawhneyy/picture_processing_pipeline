@@ -2,13 +2,14 @@
   "dependencies": {
     "bullmq": "^5.56.6",
     "express": "^5.1.0",
+    "fs": "^0.0.1-security",
     "ioredis": "^5.6.1",
-    "multer": "^2.0.2"
+    "multer": "^2.0.2",
+    "sharp": "^0.34.3"
   },
   "name": "video_processing_pipeline",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
