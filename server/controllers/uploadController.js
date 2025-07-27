@@ -37,7 +37,20 @@ const getJobStatus = async(req,res) => {
 
         // fetch state from jobInfo and fetch processed data
         const state = await jobInfo.getState();
-        const result = await jobInfo.returnvalue; // processed data
+
+        // handle if state is failed or job gets failed
+        if(state === 'failed'){
+            const failedReason = jobInfo.failedReason;
+            return res.status(500).json({
+                success: false, 
+                message: 'Job Failed', 
+                jobID: JobID, 
+                state: state,
+                error: failedReason
+            });
+        }
+
+        const result = jobInfo.returnvalue; // processed data
 
         // Return Image URL too     // converting image to url so we can access this from frontend      // basename extracts only name from whole url
         const imageURL = result && result.resized ? `${req.protocol}://${req.get('host')}/processed/${result.resized}` : null   //* http://localhost:3000/processed/predator.jpeg
