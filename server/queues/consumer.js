@@ -43,7 +43,9 @@ const worker = new Worker('image-processing-q', async(job) => {
 
 // handling if success
 worker.on('completed', (job) => {
-    console.log(`job completed of ID: ${job.id}: ${job.data.filename}`)
+    console.log('');
+    console.log(`job completed of ID: ${job.id}: ${job.data.filename}`);
+    console.log('');
 })
 
 // handling error
