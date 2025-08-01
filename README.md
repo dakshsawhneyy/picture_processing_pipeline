@@ -44,19 +44,7 @@ Every image gets picked, queued, processed, resized, and stored. All automatical
 2. Run `npm install` in both `api/` and `worker/` folders
 3. Start Redis server (can be via Docker)
 4. Run the backend server and worker
-5. Access Arena UI at `http://localhost:5000`
-
-## Folder Structure
-
-```
-root/
-│
-├── api/               # Express backend server
-├── worker/            # BullMQ image processor
-├── processed/         # Output folder for resized images
-├── uploads/           # Temp upload folder
-└── README.md
-```
+5. Access Arena UI at `http://localhost:9000`
 
 ## Why I Built This
 
