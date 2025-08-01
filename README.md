@@ -4,6 +4,8 @@ Most image processing apps today? Locked behind subscriptions or bloated service
 
 So I built my own. End-to-end. Real-time. Scalable.
 
+<img width="1420" height="688" alt="diagram-export-8-1-2025-4_18_03-PM" src="https://github.com/user-attachments/assets/351619bf-1553-4388-9576-a2ddc6e7ebc3" />
+
 ## What I Built
 
 A complete picture processing pipeline using:
@@ -21,6 +23,11 @@ Every image gets picked, queued, processed, resized, and stored. All automatical
 - Fail-safe error handling with retry support
 - Auto-generated logs and structured job data
 - Clean, production-ready code
+
+<img width="1778" height="770" alt="image (52)" src="https://github.com/user-attachments/assets/f1785064-331e-44cf-93d9-5bbd2c87d71a" />
+<img width="1742" height="915" alt="image (54)" src="https://github.com/user-attachments/assets/c2af4726-25a7-40af-b968-ed84f2135d3c" />
+<img width="1051" height="936" alt="image (53)" src="https://github.com/user-attachments/assets/55791c4a-76b2-4cb2-885c-1bcf9c848c2a" />
+
 
 ## Stack
 
